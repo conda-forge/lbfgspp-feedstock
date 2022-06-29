@@ -10,7 +10,7 @@ source:
     sha256: 7101744a538c3aff52e10c82267305847b0b5e9d39f9974b4b29812cd1398ff9
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
@@ -33,7 +33,7 @@ test:
     - test -d $PREFIX/include/LBFGSpp  # [unix]
     - if not exist %LIBRARY_PREFIX%\include\LBFGS.h exit 1  # [win]
     - if not exist %LIBRARY_PREFIX%\include\LBFGSB.h exit 1  # [win]
-    - set -ex; for i in examples/*.cpp; do $CXX $CXXFLAGS -I$PREFIX/include/eigen3 -o "$i.out" "$i" && "$i.out"; done  # [unix]
+    - set -ex; for i in examples/*.cpp; do $CXX $CXXFLAGS -I$PREFIX/include/eigen3 -o "$i.out" "$i" && "$i.out"; done  # [unix and target_platform == build_platform]
 
 
 about:
